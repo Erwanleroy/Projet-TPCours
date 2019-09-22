@@ -1,0 +1,51 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap.css"/>
+    <link rel="stylesheet" href="index.css"/>
+    <title>GESTION DOSSARDS</title>
+</head>
+<body>
+    <header>
+        <a href="https://www.github.com/Erwanleroy/Projet-TPCours">github.com/Erwanleroy/Projet-TPCours</a>
+        <p>LE ROY ERWAN : </p>
+        <a href="mailto:erwanlr56@gmail.com">erwanlr56@gmail.com</a>
+    </header>
+    <span id="clavierCalto">
+        <span id="lineDelInput">
+            <input type="text" id="textInput" placeholder="Numero De Brassard">
+            <div id="delButton" class="blackButtons" onclick="removeLastNumber()">Eff</div>
+            <!-- ici je sais pas encore quel bouton cest je vais devoir renommer tout ca -->
+            <div id="boutonMystereMDRRR" class="blackButtons">LE BOUTON MYSTERE</div>
+        </span>
+        <span id="lineNumber">
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(1)">1</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(2)">2</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(3)">3</div>
+        </span>
+        <span id="lineNumber">
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(4)">4</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(5)">5</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(6)">6</div>
+        </span>
+        <span id="lineNumber">
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(7)">7</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(8)">8</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(9)">9</div>
+        </span>
+        <span id="lineOkZero">
+            <div id="zero" class="bluettons" onclick="fillWithButton(0)">0</div>
+            <div id="okButton" class="blackButtons">Ok</div>
+        </span>
+    </span>
+    <!-- lordre est important jquery => utiliser par tout les autres package -->
+    <!-- popper pour bootstrap / bootstrap cest la base -->
+    <!-- et index pour pouvoir appliquer mes styles et action par dessus bootstrap -->
+    <script src="jquery.js"></script>
+    <script src="popper.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
