@@ -3,16 +3,22 @@
     <title>Result DB</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css"/>
     <style>
         *{
             font-family: 'Open Sans', sans-serif;
         }
         table{
             margin:auto;
+            margin-top:20vh;
             width:90vw;
         }
         tr{
             height:40px;
+        }
+        td{
+            text-align:center;
+            border:1px solid black;
         }
     </style>
 </head>
@@ -20,8 +26,10 @@
     <table>
         <tr>
         <?php
+        $nbrDoss = 0;
         $there = false;
         $used = [];
+        $lastAdded=0;
         // connection a la bdd
         $bdd = new PDO('mysql:host=localhost;dbname=id10988661_dossards;charset=utf8', 'id10988661_leroy', 'leroy');
         // la on requete tout les num de dossard
@@ -31,6 +39,13 @@
         {
             // $used sincremente de "donnee" qui contient donc le numero de dossard
             $used[] = $donnees[0];
+            // jaurai pu faire un count a ma requete mais vu que jai decide de faire ca 
+            // apres cest plus facile et rapide de directement compter le nombre de boucle dans mon while
+            $nbrDoss+=1;
+            // le moyen le plus facile davoir le premier element sans se casser la tete a cause du fetch
+            if($nbrDoss==1){
+                $lastAdded = $donnees[0];
+            }
         }
         // on met ca dans lordre
         asort($used);
@@ -40,7 +55,7 @@
             // si i == le premier item on le met en couleur
             if($i==$firstItem){
             ?>
-                <td style="background-color:red">
+                <td style="background-color:black;color:white">
                     <?php
                         echo $i;
                     ?>
@@ -70,5 +85,21 @@
         ?>
         </tr>
     </table>
+    <div class="listHeader">
+        <a>LITTOULE STATISTOUQUE</a>
+        <p>Nombre de dossards assigne 
+            <?php
+                echo $nbrDoss;
+            ?>
+        </p>
+        <p>Dernier ajout 
+            <?php
+                echo $lastAdded;
+            ?>
+        </p>
+    </div>
+        <a class="backButton" href="javascript:history.go(-1)">Back</a>
+    <script src="jquery.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

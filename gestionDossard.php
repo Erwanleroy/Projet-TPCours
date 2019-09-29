@@ -2,6 +2,7 @@
 <head>
     <title>Result DB</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css"/>
     <style>
         *{
             font-family: 'Open Sans', sans-serif;
@@ -11,22 +12,6 @@
         }
         .bad{
             color:red;
-        }
-        a:hover{
-            background-color:rgba(0,0,0,0.1);
-            transition-duration:0.5s;
-        }
-        a{
-            transition-duration:0.5s;
-            text-decoration:none;
-            color:black;
-            padding:10px;
-            border-radius:5px;
-            font-size:2em;
-            position:absolute;
-            top:1em;
-            left:1em;
-            border : 1px solid black;
         }
         p{
             position:absolute;
@@ -46,38 +31,53 @@ $bdd = new PDO('mysql:host=localhost;dbname=id10988661_dossards;charset=utf8', '
 
 $numDoss = $_GET['d'];
 $bool = $_GET['f'];
+// check si le dossard est deja dans la base
+$empty = $bdd->query('SELECT 1 FROM dossard WHERE NumDoss='.$numDoss);
+// ajout numero dossard
 if($bool==1){
-    $empty = $bdd->query('SELECT 1 FROM dossard WHERE NumDoss='.$numDoss);
+    // si le dossard nest pas present
     if($empty->fetch()==false){
+        // on fait une requete prepare pour linsertion de notre num
         $req = $bdd->prepare('INSERT INTO dossard(NumDoss) VALUES(:numDoss)');
         $req->execute(array(
         	'numDoss' => $numDoss,
         ));
         ?>
+        <!-- message de reussite -->
         <p class="good">Le numero de dossard a bien ete ajoute</p>
-        <a href="javascript:history.go(-1)">Back</a>
+        <!-- on propose un bouton retour -->
+        <a href="javascript:history.go(-1)" class="backButton">Back</a>
         <?php   
+    // si le dossard est present
     }else{
+        // message derreur on va pas reecrire un meme dossard dans la base
         ?>
         <p class="bad">Le numero de dossard est deja present dans la base de donnees desole</p>
-        <a href="javascript:history.go(-1)">Back</a>
+        <a href="javascript:history.go(-1)" class="backButton">Back</a>
         <?php
     }
+// suppression dun dossard
 }else{
-    $empty = $bdd->query('SELECT 1 FROM dossard WHERE NumDoss='.$numDoss);
+    // si le dossard nest pas present
     if($empty->fetch()==false){
+        // message derreur on va pas supprimer qqch qui nexiste pas
         ?>
         <p class="bad">Le numero de dossard n'est pas present dans la base de donnees desole</p>
-        <a href="javascript:history.go(-1)">Back</a>
+        <a href="javascript:history.go(-1)" class="backButton">Back</a>
         <?php
+    // si le dossard est present
     }else{
+        // requete de suppression
         $req = $bdd->query('DELETE FROM dossard WHERE NumDoss='.$numDoss);
+        // message de reussite
         ?>
         <p class="good">Le numero de dossard a bien ete supprime</p>
-        <a href="javascript:history.go(-1)">Back</a>
+        <a href="javascript:history.go(-1)" class="backButton">Back</a>
         <?php   
     }
 }
 ?>
+<script src="jquery.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

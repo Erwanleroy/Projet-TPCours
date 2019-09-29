@@ -4,7 +4,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-header{
+.header{
     height: 3vh;
     background-color: rgba(0,0,0,0.2);
     border-bottom: 1px solid #007bff;
@@ -122,4 +122,37 @@ form{
     color:black;
     border: 1px solid black;
     border-radius:5px;
+}
+
+.listHeader{
+    position: absolute;
+    top:0;
+    cursor: default;
+}
+.listHeader a{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.listHeader p{
+    width:10vw;
+    height: 5vh;
+    text-align: center;
+    border:1px solid black;
+}
+.backButton{
+    text-decoration:none;
+    color:black;
+    padding:10px;
+    border-radius:5px;
+    font-size:2em;
+    position:absolute;
+    top:1em;
+    right:1em;
+    border : 1px solid black;
+}
+.backButton:hover{
+    background-color:rgba(0,0,0,0.3);
+    color:black;
+    text-decoration:none;
+    transition-duration:0.5s;
 }
