@@ -1,0 +1,49 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css"/>
+    <title>GESTION DOSSARDS</title>
+</head>
+<body>
+    <header>
+        <a href="https://www.github.com/Erwanleroy/Projet-TPCours">github.com/Erwanleroy/Projet-TPCours</a>
+    </header>
+    <a href="list.php" class="theList">THE LIST</a>
+    <span id="clavierCalto">
+        <span id="lineDelInput">
+            <input type="text" id="textInput" placeholder="Numero De Brassard">
+            <div id="delButton" class="blackButtons" onclick="removeLastNumber()">Eff</div>
+            <!-- ici je sais pas encore quel bouton cest je vais devoir renommer tout ca -->
+            <div id="Cancel" class="blackButtons" onclick="removeDossard()">Annuler</div>
+        </span>
+        <span id="lineNumber">
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(1)">1</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(2)">2</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(3)">3</div>
+        </span>
+        <span id="lineNumber">
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(4)">4</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(5)">5</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(6)">6</div>
+        </span>
+        <span id="lineNumber">
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(7)">7</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(8)">8</div>
+            <div id="flatNumbers" class="bluettons" onclick="fillWithButton(9)">9</div>
+        </span>
+        <span id="lineOkZero">
+            <div id="zero" class="bluettons" onclick="fillWithButton(0)">0</div>
+            <div id="okButton" class="blackButtons" onclick="addDossard()">Ok</div>
+        </span>
+    </span>
+    <form method="get" action="gestionDossard.php" id="formDossard">
+        <input type="text" id="inputDossard" name="d" value="0"/>
+        <input type="text" id="inputBool" name="f" value="0"/>
+    </form>
+    <!-- lordre est important jquery -->
+    <script src="jquery.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
