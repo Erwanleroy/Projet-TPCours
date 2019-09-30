@@ -1,13 +1,10 @@
 // je ne sais pas si on a le droit de supprimer la pub du site 🤔 dans le doute je lai fait parce que je suis fier davoir reussi :)
 $("document").ready(function(){
-    // onload (quand la page se charge) linput se vide et prend le focus
-    $("#textInput").val("")
     $("#textInput").focus()
     // on supprime la pub du site mdr
     $('img[alt="www.000webhost.com"]').parent().parent().remove()
 
 })
-
 
 // quand linput (qui prend la valeur de dossard de lutilisateur) prend le focus (on clique dessus ou bien on est amene dessus onLoad par exemple)
 $("#textInput").focus(function(){
@@ -84,6 +81,9 @@ function removeDossard(){
         $("#inputDossard").val($("#textInput").val())
         // le deuxieme input du form est la pour savoir si cest une annulation ou un ajout 0=annulation
         $("#inputBool").val(0)
+        // avant denvoyer le formulaire on le vide (car comme apres on utilise un bouton "retour"
+        // linput garde les valeurs davant, on ne peux pas non plus utiliser un "onload" car la pae nest pas rechargee)
+        $("#textInput").val("")
         // on envoie le form
         $("#formDossard").submit()
     // si notre input prenant la valeur du numero de dossard est vide
@@ -99,6 +99,9 @@ function addDossard(){
         $("#inputDossard").val($("#textInput").val())
         // le deuxieme input du form est la pour savoir si cest une annulation ou un ajout 1=ajout
         $("#inputBool").val(1)
+        // avant denvoyer le formulaire on le vide (car comme apres on utilise un bouton "retour"
+        // linput garde les valeurs davant, on ne peux pas non plus utiliser un "onload" car la pae nest pas rechargee)
+        $("#textInput").val("")
         // on envoie le form
         $("#formDossard").submit()
     // si notre input prenant la valeur du numero de dossard est vide
@@ -109,6 +112,5 @@ function addDossard(){
 }
 
 // le probleme quand je commence a commenter cest que jen met trop 
-// au final jai plus de commentaire que de code
-// je suis sur que personne ne lira mes commentaires jusquici 🤔🧐
+// au final jai plus de commentaire que de code 🤔🧐
 
