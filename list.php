@@ -7,6 +7,7 @@
     <style>
         *{
             font-family: 'Open Sans', sans-serif;
+            user-select:none;
         }
         table{
             margin:auto;
