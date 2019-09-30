@@ -20,6 +20,10 @@
             text-align:center;
             border:1px solid black;
         }
+        .active{
+            background-color:black;
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -42,11 +46,9 @@
             // jaurai pu faire un count a ma requete mais vu que jai decide de faire ca 
             // apres cest plus facile et rapide de directement compter le nombre de boucle dans mon while
             $nbrDoss+=1;
-            // le moyen le plus facile davoir le premier element sans se casser la tete a cause du fetch
-            if($nbrDoss==1){
-                $lastAdded = $donnees[0];
-            }
         }
+        // le moyen le plus facile davoir le premier element sans se casser la tete a cause du fetch
+        $lastAdded = end($used);
         // on met ca dans lordre
         asort($used);
         // on extraie le premier item
@@ -55,7 +57,7 @@
             // si i == le premier item on le met en couleur
             if($i==$firstItem){
             ?>
-                <td style="background-color:black;color:white">
+                <td class="active">
                     <?php
                         echo $i;
                     ?>
@@ -86,7 +88,7 @@
         </tr>
     </table>
     <div class="listHeader">
-        <a>LITTOULE STATISTOUQUE</a>
+        <a class="titouleStatistouque">LITTOULE STATISTOUQUE</a>
         <p>Nombre de dossards assigne 
             <?php
                 echo $nbrDoss;
@@ -98,7 +100,7 @@
             ?>
         </p>
     </div>
-        <a class="backButton" href="javascript:history.go(-1)">Back</a>
+    <a class="backButton" href="javascript:history.go(-1)">Back</a>
     <script src="jquery.js"></script>
     <script src="index.js"></script>
 </body>
