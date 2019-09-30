@@ -1,3 +1,6 @@
+// liste des couleur classique utilise partout sur internet (base sur les couleurs bootstrap)
+const colors=["#007bff","#6610f2","#6f42c1","#dc3545","#e83e8c","#fd7e14","#ffc107","#28a745","#20c997","#17a2b8","#6c757d","#007bff","#6c757d","#28a745","#17a2b8","#ffc107","#dc3545","#f8f9fa","#343a40"]
+
 // je ne sais pas si on a le droit de supprimer la pub du site 🤔 dans le doute je lai fait parce que je suis fier davoir reussi :)
 $("document").ready(function(){
     $("#textInput").focus()
@@ -31,9 +34,18 @@ $("#textInput").keydown(function(e){
     }
 })
 function addInput(e){
+    // quand on entre la valeur au clavier jai un stringm du coup jaurais pu faire des (e!==0 || e!=="0")
+    // mais cest long et ne sert a rien cest plus simple de directement le convertir en string
+    e = parseInt(e)
     // Pour empecher de depasser les 1000 brassard =================> parseInt($("#textInput").val())<=99
-    // Pour pouvoir commencer a le remplir si linput est vide ======> $("#textInput").val()==""
-    if(parseInt($("#textInput").val())<=99 || $("#textInput").val()==""){
+    // Pour pouvoir commencer a le remplir si linput est vide ======> on check que levent soit diff de 0 pour ne pas
+    // avoir de chiffre bizarre dans la bdd ou pire "0" qui ferais bugger le tout
+    if($("#textInput").val()===""){
+        console.log(e)
+        if(e!==0){
+             $("#textInput").val($("#textInput").val()+e)
+        }
+    }else if(parseInt($("#textInput").val())<=99){
         $("#textInput").val($("#textInput").val()+e)
     // ici ce que je fait cest que je gere tout les nombres de 1 a 999 mais pas 1000
     // donc je cree une condition special : si linput est = a 100
@@ -110,6 +122,8 @@ function addDossard(){
         alert("Please fill the input")
     }
 }
+
+
 
 // le probleme quand je commence a commenter cest que jen met trop 
 // au final jai plus de commentaire que de code 🤔🧐
