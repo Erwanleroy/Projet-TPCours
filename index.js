@@ -1,5 +1,5 @@
 // liste des couleur classique utilise partout sur internet (base sur les couleurs bootstrap)
-const colors=["#007bff","#6610f2","#6f42c1","#dc3545","#e83e8c","#fd7e14","#ffc107","#28a745","#20c997","#17a2b8","#6c757d","#007bff","#6c757d","#28a745","#17a2b8","#ffc107","#dc3545","#f8f9fa","#343a40"]
+const colors=["#007bff","#6610f2","#6f42c1","#dc3545","#e83e8c","#fd7e14","#ffc107","#28a745","#20c997","#17a2b8","#6c757d","#007bff","#6c757d","#28a745","#17a2b8","#ffc107","#dc3545","#343a40"]
 
 // je ne sais pas si on a le droit de supprimer la pub du site 🤔 dans le doute je lai fait parce que je suis fier davoir reussi :)
 $("document").ready(function(){
@@ -124,7 +124,23 @@ function addDossard(){
 }
 
 
-
+// on hover jveux plein de couleur
+$("td").mouseenter(function(){
+    // on ne joue pas avec les dossard deja affecte mdr 
+    if(this.className!=="active"){
+        this.className="fullColor"
+        // apres je veux juste y activer une class pour que ca se fasse que au hover
+        this.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+})
+$("td").mouseout(function(){
+    // on ne joue pas avec les dossard deja affecte mdr 
+    if(this.className!=="active"){
+        this.className="noMoreColor"
+        // apres je veux juste y activer une class pour que ca se fasse que au hover
+        this.style.backgroundColor = "white";
+    }
+})
 // le probleme quand je commence a commenter cest que jen met trop 
 // au final jai plus de commentaire que de code 🤔🧐
 
