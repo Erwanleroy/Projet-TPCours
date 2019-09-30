@@ -163,3 +163,6 @@ form{
     text-decoration:none;
     transition-duration:0.5s;
 }
+.noMoreColor{
+    transition-duration:2s;
+}
