@@ -36,7 +36,7 @@
         $used = [];
         $lastAdded=0;
         // connection a la bdd
-        $bdd = new PDO('mysql:host=localhost;dbname=id10988661_dossards;charset=utf8', 'id10988661_leroy', 'leroy');
+        $bdd = new PDO('mysql:host=localhost;dbname=id10988661_dossards;charset=utf8', 'YOUR USERNAME', 'YOUR PASS');
         // la on requete tout les num de dossard
         $allNumbers = $bdd->query('SELECT NumDoss FROM dossard');
         // donnee prend les valeur des nums
