@@ -81,6 +81,24 @@
     transition-duration: 0.4s;
 }
 
+.redButtons:hover{
+    background-color: rgba(255,0,0,0.2);
+    transition-duration: 0.4s;
+}
+
+.redButtons{
+    transition-duration: 0.4s;
+}
+
+.greenButtons:hover{
+    background-color: rgba(0,255,0,0.2);
+    transition-duration: 0.4s;
+}
+
+.greenButtons{
+    transition-duration: 0.4s;
+}
+
 #okButton{
     display: flex;
     align-items:center;
@@ -102,10 +120,6 @@ input::-webkit-input-placeholder {
 
 div{
     cursor:pointer;
-}
-
-form{
-    visibility: hidden;
 }
 
 .theList:hover{
