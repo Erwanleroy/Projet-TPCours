@@ -58,7 +58,7 @@
             // si i == le premier item on le met en couleur
             if($i==$firstItem){
             ?>
-                <td class="active">
+                <td class="active" id="<?php echo $i?>">
                     <?php
                         echo $i;
                     ?>
@@ -69,7 +69,7 @@
             // et si i est pas egal au premier item de larray bah on laffiche classique
             }else{
             ?>
-                <td>
+                <td id="<?php echo $i?>">
                     <?php
                         echo $i;
                     ?>
