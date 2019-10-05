@@ -27,7 +27,7 @@
 <body>
 <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=id10988661_dossards;charset=utf8', 'id10988661_leroy', 'leroy');
+$bdd = new PDO('mysql:host=localhost;dbname=id10988661_dossards;charset=utf8', 'YOUR ID', 'YOUR PASS');
 
 $numDoss = $_GET['d'];
 $bool = $_GET['f'];
