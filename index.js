@@ -65,57 +65,17 @@ function removeLastNumber(){
     $("#textInput").val($("#textInput").val().substring(0, $("#textInput").val().length - 1))
 }
 
-
-// EXPLICATION :
-// Daccord dans le code et la logique cest pas joli mais cest plus simple et plus beau en apparence
-// donc pour pouvoir envoyer "mon formulaire" jai creer ma calculatrice en html/css/js sans penser au formulaire
-// Ainsi je n'ai pas a gerer les preventDefault des boutons OK Annuler pour gerer si cest une annulation ou un enregistrement
-// BREF
-// jai penser de cette maniere : je cree un formulaire cache de lutilisateur : 
-// form{
-//      visibility: hidden;
-// }
-// et quand je clique sur ok ou annuler La on rempli notre formulaire 
-
-
-
-// the invisible form : 
-
-{/* <form method="get" action="gestionDossard.php" id="formDossard"> */}
-{/*      <input type="text" id="inputDossard" name="d" value="0"/> */}
-{/*      <input type="text" id="inputBool" name="f" value="0"/> */}
-{/* </form> */}
-
 function removeDossard(){
     // si notre input prenant la valeur du numero de dossard nest pas vide
     if($("#textInput").val()!==""){
-        // Notre premier input du form a envoyer prend la valeur entree par lutilisateur
-        $("#inputDossard").val($("#textInput").val())
-        // le deuxieme input du form est la pour savoir si cest une annulation ou un ajout 0=annulation
-        $("#inputBool").val(0)
-        // avant denvoyer le formulaire on le vide (car comme apres on utilise un bouton "retour"
-        // linput garde les valeurs davant, on ne peux pas non plus utiliser un "onload" car la pae nest pas rechargee)
+    console.log($("#textInput").val())
+        // on vide linput avant de changer de page pour que quand on appuie sur back apres linput soit deja vide
+        value = $("#textInput").val()
         $("#textInput").val("")
-        // on envoie le form
-        $("#formDossard").submit()
-    // si notre input prenant la valeur du numero de dossard est vide
-    }else{
-        // alert error
-        alert("Please fill the input")
-    }
-}
-function addDossard(){
-    // si notre input prenant la valeur du numero de dossard nest pas vide
-    if($("#textInput").val()!==""){
-        // Notre premier input du form a envoyer prend la valeur entree par lutilisateur
-        $("#inputDossard").val($("#textInput").val())
-        // le deuxieme input du form est la pour savoir si cest une annulation ou un ajout 1=ajout
-        $("#inputBool").val(1)
-        // avant denvoyer le formulaire on le vide (car comme apres on utilise un bouton "retour"
-        // linput garde les valeurs davant, on ne peux pas non plus utiliser un "onload" car la pae nest pas rechargee)
-        $("#textInput").val("")
-        // on envoie le form
-        $("#formDossard").submit()
+        //on fait notre requete directement dans lurl
+        window.location.href=window.location.origin+"/gestionDossard.php?d="+value+"&f=0";
+        // requete en ajax :
+        // $.get( "gestionDossard.php", { f: "0", d: $("#textInput").val() } );
     // si notre input prenant la valeur du numero de dossard est vide
     }else{
         // alert error
@@ -123,6 +83,26 @@ function addDossard(){
     }
 }
 
+function addDossard(){
+    // si notre input prenant la valeur du numero de dossard nest pas vide
+    if($("#textInput").val()!==""){
+        // on vide linput avant de changer de page pour que quand on appuie sur back apres linput soit deja vide
+        value = $("#textInput").val()
+        $("#textInput").val("")
+        //on fait notre requete directement dans lurl
+        window.location.href=window.location.origin+"/gestionDossard.php?d="+value+"&f=1";
+        // requete en ajax :
+        // $.get( "gestionDossard.php", { f: "1", d: $("#textInput").val() } );
+    // si notre input prenant la valeur du numero de dossard est vide
+    }else{
+        // alert error
+        alert("Please fill the input")
+    }
+}
+
+$(".theList").click(function(){
+        $("#textInput").val("")
+})
 
 // on hover jveux plein de couleur
 $("td").mouseenter(function(){
@@ -141,6 +121,28 @@ $("td").mouseout(function(){
         this.style.backgroundColor = "white";
     }
 })
+
+// quand on click sur une casezer
+$("td").click(function(){
+    // active = dossard deja assigne
+    if($(this).hasClass("active")){
+        // on passe un ajax methode get de suppression
+        $.get( "gestionDossard.php", { f: "0", d: $(this).attr("id") } );
+        // on passe en blanc (en fait ici les couleurs ne sont pas changer en fonction de la bdd
+        // car il faudrais recharger la page ou utiliser une methode ajax pour modifier directement la valeur)
+        // BREF : cest plus simple  
+        $(this).attr("class","noMoreColor")
+    }else{
+        // on passe un ajax methode get dajout
+        $.get( "gestionDossard.php", { f: "1", d: $(this).attr("id") } );
+        // on passe en blanc (en fait ici les couleurs ne sont pas changer en fonction de la bdd
+        // car il faudrais recharger la page ou utiliser une methode ajax pour modifier directement la valeur)
+        // BREF : cest plus simple  
+        $(this).attr("class","active")
+        $(this).css({"background-color":"black"})
+    }
+})
+
 // le probleme quand je commence a commenter cest que jen met trop 
 // au final jai plus de commentaire que de code 🤔🧐
 
