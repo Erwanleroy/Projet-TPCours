@@ -6,7 +6,6 @@ $("document").ready(function(){
     $("#textInput").focus()
     // on supprime la pub du site mdr
     $('img[alt="www.000webhost.com"]').parent().parent().remove()
-
 })
 
 // quand linput (qui prend la valeur de dossard de lutilisateur) prend le focus (on clique dessus ou bien on est amene dessus onLoad par exemple)
